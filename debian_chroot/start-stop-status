@@ -22,6 +22,12 @@ start_daemon ()
 
 	[ ! -d ${CHROOTTARGET}/volume1 ] && mkdir -p ${CHROOTTARGET}/volume1
         grep -q "${CHROOTTARGET}/volume1 " /volume1 || mount -o bind /volume1 ${CHROOTTARGET}/volume1
+
+	[ ! -d ${CHROOTTARGET}/volume2 ] && mkdir -p ${CHROOTTARGET}/volume2
+        grep -q "${CHROOTTARGET}/volume2 " /volume1 || mount -o bind /volume2 ${CHROOTTARGET}/volume2
+        
+	[ ! -d ${CHROOTTARGET}/volume3 ] && mkdir -p ${CHROOTTARGET}/volume3
+        grep -q "${CHROOTTARGET}/volume3 " /volume3 || mount -o bind /volume3 ${CHROOTTARGET}/volume2
         
         # Start all services
         ${INSTALL_DIR}/app/start.py
